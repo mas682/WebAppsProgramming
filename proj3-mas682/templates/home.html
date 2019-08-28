@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block main %}
+	{# neat! you can actually "call" other blocks like methods... since they are. #}
+	<h2>{{ self.title() }}</h2>
+
+	{# this is the basic test we're using to see if someone is logged in.
+		you'll have to extend this logic further... #}
+	{% if g.user %}
+		{% if g.user.librarian %}
+			<p>
+		{% else %}
+			<p>Welcome back!
+			<br> To borrow a book, simply click "Borrow this book"
+			<br> To return a book, click "Return this book"
+			<br> If you already have the book, the button will display "Return this book"
+		{% endif %}
+			<p>
+			<table>
+				<tr>
+					{% if g.user.librarian %}
+					<th> Borrowers </th>
+					{% endif %}
+					<th> Title </th>
+					<th> Author </th>
+					<th> Book ID </th>
+					<th> Borrow/Return </th>
+				</tr>
+			{% for book in book_list %}
+			  {% if g.user.librarian %}
+			      <tr>
+					  {% if book.borrowed_by %}
+	                  	<td> {{book.borrowed_by.count()}} </td>
+					  {% else %}
+						<td> 0 </td>
+					  {% endif %}
+					  <td><a href = "{{ url_for('books', book_id = book.book_id) }}">"{{ book.title}}"</a> </td>
+    				  <td> {{book.author}} </td>
+   					  <td> {{book.book_id}} </td>
+					  <td>
+						  {% if borrowed[loop.index0] %}
+							  <form method="post">
+								  <button type="submit" name="book_id" value= {{book.book_id}}>Return this book</button>
+							  </form>
+						  {% else %}
+							  <form method="post">
+								  <button type="submit" name="book_id" value= {{book.book_id}}>Borrow this book</button>
+							  </form>
+						  {% endif %}
+					  </td>
+				  </tr>
+			  {% else %}
+			  		<tr>
+						<td>{{ book.title}}</td>
+    					<td>{{book.author}} </td>
+  						<td>{{book.book_id}}</td>
+						<td>
+			  				{% if borrowed[loop.index0] %}
+								<form method="post">
+									<button type="submit" name="book_id" value= {{book.book_id}}>Return this book</button>
+			  					</form>
+							{% else %}
+			  					<form method="post">
+									<button type="submit" name="book_id" value= {{book.book_id}}>Borrow this book</button>
+			  					</form>
+							{% endif %}
+						</td>
+					</tr>
+				{% endif %}
+			{% endfor %}
+			</table>
+	{% else %}
+		<p>
+			Welcome to Librarytron!
+			<br> If you have an account login to return or borrow a book
+			<br> If you do not have an account, click "Become a patron!" to join
+			<br> Below is a listing of our collection
+		<p>
+		<table>
+			<tr>
+				<th> Title </th>
+				<th> Author </th>
+			</tr>
+		{% for book in book_list %}
+		<tr>
+			 <td>"{{ book.title}}"</td>
+			 <td> {{book.author}} </td>
+		 </tr>
+		 {% endfor %}
+		</table>
+	{% endif %}
+
+{% endblock %}

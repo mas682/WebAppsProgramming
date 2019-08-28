@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block main %}
+	{# neat! you can actually "call" other blocks like methods... since they are. #}
+	<h2>{{ self.title() }}</h2>
+		<p>
+			<table>
+				<tr>
+					<th> Title </th>
+					<th> Author </th>
+					<th> Book ID </th>
+					{% if not borrowers_exist %}
+						<th> Remove </th>
+					{% endif %}
+					<th>
+				</tr>
+			    <tr>
+ 				    <td> "{{ book.title}}" </td>
+    			    <td> {{book.author}} </td>
+   			    	<td> {{book.book_id}} </td>
+					{% if not borrowers_exist %}
+						<td>
+							<form method="post">
+								<button type="submit" name="book_remove" value= {{book.book_id}}>Remove book</button>
+							</form>
+						</th>
+					{% endif %}
+
+				</tr>
+			</table>
+				<p>
+				<table>
+					<tr>
+						<th>Borrowers </th>
+					</tr>
+					<tr>
+						{% if borrowers_exist %}
+							<td>
+							<ol>
+							{% for person in borrowers %}
+								<li> {{person.username}}
+							{% endfor %}
+							</ol>
+							</td>
+						{% else %}
+							<td>
+							No one is currently borrowing the book
+							</td>
+						{% endif %}
+					</tr>
+				</table>
+{% endblock %}

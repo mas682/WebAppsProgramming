@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}User List{% endblock %}
+
+{% block main %}
+	<h2>{{ self.title() }}</h2>
+
+	{% if error %}
+		<div class="error"><strong>Error:</strong> {{ error }}</div>
+	{% endif %}
+	{% if not librarians == None %}
+	<p>
+		<h3> Librarians </h3>
+		<ul>
+
+		{% for lib in librarians %}
+			<li><a href = "{{url_for('user_list', id_num = lib.user_id) }}">{{ lib.username }}</a>
+		{% endfor %}
+		</ul>
+	{% endif %}
+	{% if not users == None %} 
+		<p>
+			<h3> Patrons </h3>
+			<ul>
+			{% for user in users %}
+				<li><a href = "{{ url_for('user_list', id_num = user.user_id) }}">{{ user.username}}</a>
+			{% endfor %}
+			</ul>
+		<p>
+	{% endif %}
+	<p>
+	<h3> Add a librarian!</h3>
+	<form action="" method="post">
+		<dl>
+			<dt>Username:
+			<dd><input type="text" name="username" size="30" value="{{ request.form.username }}">
+			<dt>E-Mail:
+			<dd><input type="text" name="email" size="30" value="{{ request.form.email }}">
+			<dt>Password:
+			<dd><input type="password" name="password" size="30">
+			<dt>Password <small>(repeat)</small>:
+			<dd><input type="password" name="password2" size="30">
+		</dl>
+		<input type="submit" value="Sign Up">
+	</form>
+{% endblock %}

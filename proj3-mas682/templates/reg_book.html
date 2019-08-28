@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Librarian Sign Up{% endblock %}
+
+{% block main %}
+	<h2>{{ self.title() }}</h2> 
+
+	{% if error %}
+		<div class="error"><strong>Error:</strong> {{ error }}</div>
+	{% endif %}
+
+	<form action="" method="post">
+		<dl>
+			<dt>Title:
+			<dd><input type="text" name="title" size="40" value="{{ request.form.username }}">
+			<dt>Author:
+			<dd><input type="text" name="author" size="30" value="{{ request.form.email }}">
+			<dt>Book ID:
+			<dd><input type="integer" name="book_id" size="30">
+		</dl>
+		<input type="submit" value="Register Book">
+	</form>
+{% endblock %}

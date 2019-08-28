@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block main %}
+	{# neat! you can actually "call" other blocks like methods... since they are. #}
+	<h2>{{ self.title() }}</h2>
+		<p>
+			<h3> Username: </h3>
+			{{user.username}}
+		<p>
+			<h3> Email: </h3>
+			{{user.email}}
+		<p>
+			<h3>Borrowing: </h3>
+			{% if bool %}
+			<ul>
+			{% for book in borrowed %}
+				<li> {{book.title}}
+			{% endfor %}
+			</ul>
+			{% else %}
+				0 books
+			{% endif %}
+		{% if not owner %}
+		<p>
+		<form method="post">
+			<button type="submit" name="remove_user" value= {{user.user_id}}>Remove user</button>
+		</form>
+		{% endif %}
+
+{% endblock %}
