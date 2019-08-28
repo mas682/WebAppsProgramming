@@ -1,0 +1,102 @@
+/************************************************************
+  Basic rules
+*************************************************************/
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	background: #ECB69B;
+	font-family: 'Segoe UI', sans-serif;
+	font-size: 125%;
+}
+
+body {
+	background: white;
+	border: 1px solid #333;
+	width: 900px;
+	margin: 1em auto;
+	padding: 0.7em;
+}
+
+h1 {
+	margin-top: 0;
+}
+
+a {
+	color: #63370F;
+	font-weight: bold;
+}
+
+a:hover {
+	color: #935B26;
+}
+
+th {
+	background-color: #FF6347;
+}
+
+table {
+  border-collapse: collapse;
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+p {
+	margin-left: 5%;
+}
+
+a {
+    text-decoration: none;
+}
+ol li {
+	text-align: left;
+}
+table, th, td {
+	border: 1px solid black;
+	text-align: center;
+}
+
+tr:nth-child(even) {
+	background-color: #C0C0C0;
+}
+
+
+/*************************************************************
+  Nav bar
+*************************************************************/
+
+nav > ul {
+	list-style-type: none;
+	padding-left: 0;
+	display: flex;
+	flex-flow: row nowrap;
+}
+
+nav > ul > li {
+	padding: 0 0.5em;
+}
+
+/* The A ~ B selector means "select any B that comes after an A. In this case,
+it selects all list items *except the first* inside the navbar's list. */
+nav > ul > li ~ li {
+	border-left: 1px solid #444;
+}
+
+/*************************************************************
+  Inputs
+*************************************************************/
+
+input, button {
+	/* "inherit" means "whatever the enclosing element's font size is."
+	Actually most (all?) CSS properties can be "inherit"! */
+	font-size: inherit;
+}
+
+
+/* This is an attribute selector. Very useful for styling inputs. */
+input[type="text"], input[type="password"] {
+	border-radius: 5px;
+}
