@@ -1,0 +1,76 @@
+table {
+  border: 1em solid #4682B4;
+  padding: 15px;
+  text-align: center;
+  width: 90%;
+  background-color: black;
+  margin: 0 auto;
+}
+
+th :visited, :active {
+  color: white;
+}
+
+#pic {
+  width: 30%;
+  align: center;
+  float: right;
+  margin-left: 5%;
+  margin-right: 5%;
+  display: block;
+}
+
+th :hover {
+  color: red;
+}
+
+html {
+  background-color: #DCDCDC;
+}
+
+
+h1 {
+  text-align: center;
+}
+
+h1 :visited,:active {
+  color: black;
+}
+
+h1 :hover {
+  color: red;
+}
+
+h1 a {
+  text-decoration: none;
+}
+
+main {
+  background-color: white;
+  width: 90%;
+  margin: 0 auto;
+  height: 100vh;
+}
+
+h2 {
+  text-align: center;
+}
+
+#make_thing {
+  background-color: black;
+  color: white;
+  margin-left: 42%;
+  width: 16%;
+  margin-right: 42%;
+}
+
+p {
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+footer {
+  background-color: #4682B4;
+  width: 90%;
+  margin: 0 auto;
+}
