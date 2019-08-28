@@ -1,0 +1,32 @@
+* {
+	box-sizing: border-box;
+}
+
+#playfield {
+	/****** DON'T CHANGE THESE. *****/
+	/**/ box-sizing: content-box; /**/
+	/**/ width: 640px;            /**/
+	/**/ height: 480px;           /**/
+	/********************************/
+
+	/* you can change this if you want :B */
+	border: 1px solid black;
+
+	/* anything at the edges will be cut off instead of going out of the box. */
+	overflow: hidden;
+
+	/* makes the cursor a hand... for SLAPPING MOSQUITOES */
+	cursor: grab;
+
+	/* makes it possible to position child elements absolutely */
+	position: relative;
+}
+
+#gameMessage {
+	/* wanna center things perfectly? do this. ;) */
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
